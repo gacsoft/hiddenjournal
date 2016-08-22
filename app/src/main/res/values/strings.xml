@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Hidden Journal</string>
+    <string name="button_new">New</string>
+    <string name="edit">Edit Entry</string>
+    <string name="button_search">Search</string>
+    <string name="edit_password">Password</string>
+    <string name="button_password">OK</string>
+    <string name="entries">Entries for %1s:</string>
+    <string name="entry_title">(optional) Title&#8230;</string>
+    <string name="entry_tags">(optional) tag1, tag2, tag3&#8230;</string>
+    <string name="save">Save changes</string>
+    <string name="reset">Reset</string>
+    <string name="delete">Delete</string>
+    <string name="changeDate">Change date</string>
+    <string name="searchTitle">Title</string>
+    <string name="searchTag">tag1, tag2, tag3&#8230;</string>
+    <string name="searchFrom">From</string>
+    <string name="searchTo">To</string>
+    <string name="searchText">Entry Text</string>
+    <string name="set">Set</string>
+</resources>
