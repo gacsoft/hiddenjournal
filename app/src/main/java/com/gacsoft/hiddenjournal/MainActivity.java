@@ -152,12 +152,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-//    public void openBrowser(View view) {
-//        Intent intent = new Intent(this, EntryEditorActivity.class);
-//        ObjectPasser.putEntry(journal.getFilteredEntries().get(0));
-//        startActivity(intent);
-//    }
-
     public void openSearch(View view) {
         Intent intent = new Intent(this, SearchActivity.class);
         intent.putExtra("com.gacsoft.hiddenjournal.password", passwordHash);
@@ -198,10 +192,6 @@ public class MainActivity extends AppCompatActivity {
         TextView year_month = (TextView) findViewById(R.id.year_month);
         SimpleDateFormat sdf = new SimpleDateFormat("LLLL", Locale.getDefault());
         year_month.setText(sdf.format(date) + " " + (date.getYear() + 1900));
-//        journal.clearFilters();
-//        journal.setDateFilter(date);
-//        journal.setPasswordFilter(passwordHash);
-//        populateList();
     }
 
     void setCurrentDay(Date date) {

@@ -57,42 +57,12 @@ public class BackupManager {
         } catch (java.io.IOException e) {e.printStackTrace();} //TODO do something here
     }
 
-    private static void OLDbackupIfNeeded( ) {
-        File journal = new File(ObjectPasser.getContext().getFilesDir(), "journal.xml");
-        if (!journal.exists())
-            return;
-
-        List<Date> backups = loadManifest();
-        if (backups.size() == 0) {
-            try {
-                copy("journal.xml", "journal.1");
-            } catch (java.io.IOException e) {}
-        }
-        else {
-            if (DateHelper.isSameDay(Calendar.getInstance().getTime(), backups.get(0)))
-                return; //if we already made a backup today
-
-            if (backups.size() == MAX_BACKUPS) {
-                backups.remove(backups.size() - 1);
-            }
-            for (int i = backups.size() + 1; i > 1; i--) {
-                rename("journal" + Integer.toString(i - 1), "journal" + Integer.toString(i));
-            }
-            try {
-            copy("journal.xml", "journal.1");
-            } catch (java.io.IOException e) {}
-        }
-        backups.add(0, Calendar.getInstance().getTime());
-        saveManifest(backups);
-    }
-
     public static List<String> getBackupList() {
-
-        return new ArrayList<>();
+        return new ArrayList<>(); //TODO NYI
     }
 
     public static void loadBackup(int id) {
-
+        //TODO NYI
     }
 
     private static void copy(String from, String to) throws java.io.FileNotFoundException, java.io.IOException {
@@ -155,6 +125,5 @@ public class BackupManager {
             out.close();
         }
         catch (Exception e) {}
-
     }
 }
