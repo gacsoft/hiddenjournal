@@ -15,6 +15,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -58,11 +59,20 @@ public class BackupManager {
     }
 
     public static List<String> getBackupList() {
-        return new ArrayList<>(); //TODO NYI
+        List<String> dates = new ArrayList<String>();
+        for (int i = 1; i < MAX_BACKUPS; i++) {
+            File backup = new File(ObjectPasser.getContext().getFilesDir(), "journal." + Integer.toString(i));
+            if (backup.exists()) {
+                DateFormat df = DateFormat.getDateInstance(DateFormat.LONG, Locale.getDefault());
+                dates.add(df.format(backup.lastModified()));
+            }
+        }
+        return dates;
     }
 
-    public static void loadBackup(int id) {
-        //TODO NYI
+    public static void loadBackup(int id) throws java.io.FileNotFoundException, java.io.IOException {
+        copy("journal." + Integer.toString(id), "journal.xml");
+        ObjectPasser.getJournal().load(new FileInputStream(new File(ObjectPasser.getContext().getFilesDir(), "journal.xml")));
     }
 
     private static void copy(String from, String to) throws java.io.FileNotFoundException, java.io.IOException {
@@ -91,39 +101,5 @@ public class BackupManager {
             if(fromFile.exists())
                 fromFile.renameTo(toFile);
         }
-    }
-
-    private static List<Date> loadManifest() {
-        List<Date> backups = new ArrayList<Date>();
-        File backupManifest = new File(ObjectPasser.getContext().getFilesDir(), "backups.dat");
-        if (backupManifest.exists()) {
-            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
-            try {
-                FileInputStream fis = new FileInputStream(backupManifest);
-                DataInputStream dis = new DataInputStream(fis);
-                BufferedReader br = new BufferedReader(new InputStreamReader(dis));
-                String line = "";
-                while ((line = br.readLine()) != null) {
-                    backups.add(format.parse(line));
-                }
-            }
-            catch (Exception e) {}
-        }
-        return backups;
-    }
-
-    private static void saveManifest(List<Date> backups) {
-        File backupManifest = new File(ObjectPasser.getContext().getFilesDir(), "backups.dat");
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
-        try {
-            FileWriter fw = new FileWriter(backupManifest, false);
-            BufferedWriter bw = new BufferedWriter(fw);
-            PrintWriter out = new PrintWriter(bw);
-            for (Date item : backups) {
-                out.println(format.format(item));
-            }
-            out.close();
-        }
-        catch (Exception e) {}
     }
 }

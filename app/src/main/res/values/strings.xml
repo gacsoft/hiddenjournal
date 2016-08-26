@@ -18,4 +18,9 @@
     <string name="searchTo">To</string>
     <string name="searchText">Entry Text</string>
     <string name="set">Set</string>
+    <string name="options">Options</string>
+    <string name="loadBackup">Load backup</string>
+    <string name="confirmBackup">Are you sure you want to load this backup? This cannot be undone.</string>
+    <string name="doneBackup">Loading finished.</string>
+    <string name="failedBackup">Loading failed. Backup might be corrupted.</string>
 </resources>

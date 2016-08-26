@@ -158,6 +158,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void openConfig(View view) {
+        Intent intent = new Intent(this, ConfigActivity.class);
+        startActivity(intent);
+    }
+
     public void populateList() {
         listView = (ListView)findViewById(R.id.list_view);
         ArrayList<String> listItems = new ArrayList<String>();

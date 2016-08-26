@@ -13,16 +13,18 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         >
-        <Button
+        <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/button_new"
+            android:src="@android:drawable/ic_menu_add"
             android:onClick="newEntry"/>
 
-        <Button
+        <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/button_search"
+            android:src="@android:drawable/ic_menu_search"
             android:onClick="openSearch"/>
 
         <EditText
@@ -41,6 +43,12 @@
             android:layout_height="wrap_content"
             android:text="@string/button_password"
             android:onClick="enterPassword"/>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/ic_menu_manage"
+            android:onClick="openConfig"/>
     </LinearLayout>
 
     <TextView
