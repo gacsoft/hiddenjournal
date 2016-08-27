@@ -93,6 +93,9 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         if (DEBUG) System.out.println("resuming");
         BackupManager.backupIfNeeded();
+        String enteredPassword = ((EditText)findViewById(R.id.edit_password)).getText().toString();
+        if (enteredPassword.equals("")) passwordHash = "";
+        else passwordHash = PasswordHashHelper.getHash(enteredPassword);
         journal.clearFilters();
         journal.setDateFilter(selectedDay);
         journal.setPasswordFilter(passwordHash);
